@@ -18,7 +18,7 @@ const package_list_jl_file = abspath(DIR, "package_list.jl") # _assets/scripts/p
 include(package_list_jl_file)
 const package_list_md_file = abspath(DIR, "package_list.md") # _assets/scripts/package_list.md
 const packages_to_exclude = String[]
-const packages_to_include = String["juliahealth.github.io"]
+const packages_to_include = String[]
 generate_package_list("JuliaHealth",
                       package_list_md_file;
                       packages_to_exclude = packages_to_exclude,
