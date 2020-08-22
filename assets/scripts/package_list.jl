@@ -52,7 +52,11 @@ end
 
 @inline function _gh_description(repo::GitHub.Repo;
                                  auth = GitHub.AnonymousAuth())::String
-    return repo.description
+    description = repo.description
+    if description === nothing
+        return ""
+    end
+    return description
 end
 
 @inline function _gh_name(repo::GitHub.Repo;
