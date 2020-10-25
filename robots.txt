@@ -1,0 +1,4 @@
+Sitemap: https://juliahealth.org/sitemap.xml
+
+User-agent: *
+Disallow:
