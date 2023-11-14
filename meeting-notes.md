@@ -4,6 +4,118 @@ These are the public notes for the JuliaHealth Community.
 Notes are published publicly here and are available for comments and review on the [public HackMD](https://hackmd.io/@AQm1lp9PSPyir6IoTPAZeQ/SJNu_d3uh). 
 Additionally, the notes are [hosted publicly on the GitHub](https://github.com/JuliaHealth/juliahealth.github.io/blob/dev/meeting-notes.md) and are open for PRs or edits as needed.
 
+# October 27 2023
+
+**In Attendance:** Jakub Mitura, Phil Vernes, Jay Sanjay
+
+**Location:** Virtual (JuliaHealth Google Meet)
+
+**Summary:** Jakub Mitura presented on his work for MedEval3D, discussion on medical imaging, debrief from the OHDSI Symposium, and some initial conversation about GSoC
+
+**Keywords:** #medical #imaging #gsoc #ohdsi
+
+## Agenda
+
+1. New member introductions
+2. New contributor round-up!
+3. Running tasks follow-ups:
+  * Short-term task follow-ups:
+    * Jacob shares info on waste water management + viral load information
+  * Long-term task follow-ups:
+    * Creating a template repository
+4. Presentation by Jakub Mitura on sub-ecosystem he created for working with CT, PET, and other medical imaging types of data. 
+5. Debrief from OHDSI Symposium (Observational Health research venue)
+6. Google Summer of Code Project Discussion
+  * JuliaHealth documentation improvement
+  * Observational Health Tooling improvements and discussion
+  * Visualization tools
+7. Upcoming and ongoing research opportunities
+  * Call for collaboration on using JuliaHealth observational health tools for multi-site study
+8. Medical Imaging Extension for Real World Evidence exploration
+8. Open discussion
+
+## Meeting Outcomes
+
+### Short-Term Outcomes
+
+
+
+### Long-Term Outcomes
+
+
+
+## Notes
+
+- New member introductions
+    - Phil Vernes
+        3. Works at JuliaHub
+        4. Developing platform for running Julia jobs
+        5. Many people at JuliaHub using tools within epi
+        6. Can solve many problems in DSL
+    - Jay Sanjay
+        8. Started contributing to the JuliaHealth ecosystem
+        9. Looking forward to collaborating
+- Running tasks follow-ups:
+  * Short-term task follow-ups:
+    * Jacob shares info on waste water management + viral load information
+  * Long-term task follow-ups:
+    * Creating a template repository
+        * We need to have a data structure to hold metadata (DICOM, NIFTI, etc.)
+        * JuliaNeuro 
+        * HDF5 for long-term storage
+            * Would be great to see everyone using this
+            * To work on this to bring this together 
+            * Multiple packages could have same
+5. Presentation by Jakub Mitura on sub-ecosystem he created for working with CT, PET, and other medical imaging types of data. 
+    6. Created three packages
+    7. Mainly talking about MedEye3D
+    8. Segment data and iterate to see what is going on
+    9. Wanted to create tools for everything around model creation
+    10. Wanted to make a viewer that is well-suited for the Julia ecosystem
+        11. Most medical viewers are quite "old"
+        12. Not really dynamic
+        13. Hard to show changes within run-time
+    14. Easy to get big increase in Julia
+        15. Usually something like 10x's faster
+    16. We do not yet standardize way to load data
+    17. Metadata is saved to HDF5 format 
+    18. Can introduce dynamic annotations
+    19. Can have layers and switch on and switch layers
+    20. Can annotate for saying where is the problem in the viewer
+    21. Viewer can dynamically update
+    22. Questions
+        23. Tested some semi-automatic algorithms
+        24. Do evaluate repeat
+        25. Makes it faster for evaluation and reviewing of medical images
+        26. Depends on OpenGL and NVIDIA drivers
+        27. Working on Docker container that keeps
+        28. What segmentation algorithm? Approach?
+            29. Based on Gaussian probability distributions
+            30. Some relaxation applied
+            31. Based mainly on the units and different kinds
+            32. Becoming more interested in transformers
+            33. Implemented in JAX but want to bring it into Julia
+            34. Segmentation for bladder cancer in image analysis
+            35. Restarted work recently in Julia 
+        36. Would be useful for others?
+            37. New segmentation for other ecosystem within Julia
+9. Upcoming and ongoing research opportunities
+  * Call for collaboration on using JuliaHealth observational health tools for multi-site study
+10. Medical Imaging Extension for Real World Evidence exploration
+    11. Idea was to implement package for medical imaging
+    12. Pillars
+        13. Computing statistics across medical imaging 
+        14. Complete datasets for experimetnign 
+        15. Feature segmentation and scanning 
+            16. Align probabilistic model between different scans
+            17. Become easier for physicians
+        18. ML model for complex models for image segmentation 
+    19. Thing to consider -- need more robustness for image alignment?
+        20. SOme transformations are relatively easier to repair
+        21. Elastic deformations
+        22. If we want 
+12. Open discussion
+
 # September 29 2023
 
 **In Attendance:** Tiem van der Deure, Scott Jones, dx/dt
@@ -83,6 +195,90 @@ Additionally, the notes are [hosted publicly on the GitHub](https://github.com/J
     - You don't just need to look for one disease, but rather multiple co-factors
   - Many healthcare systems put together monitoring systems
     - NHS (in UK) dismantled their monitoring systems
+
+# September 29 2023
+
+**In Attendance:** Tiem van der Deure, Scott Jones, dx/dt
+
+**Location:** Virtual (JuliaHealth Google Meet)
+
+**Summary:** Discussion on viral load found in wastewater, GSoD for this fall/GSoC for next summer, and upcoming research opportunities and events
+
+**Keywords:** #databases #wastewater #interfaces #gsoc #ohdsi
+
+## Agenda
+
+1. New member introductions 
+
+2. Running tasks follow-ups:
+
+    1. Short-term task follow-ups:
+
+    2. Long-term task follow-ups:
+
+        - Creating a template repository
+
+3. Upcoming research opportunities and events
+
+    1. Not too early to start thinking about GSoC
+
+    2. Julia and OHDSI Symposium
+
+4. Infectious Disease load for various sewage water data
+
+5. Open discussion
+
+## Meeting Outcomes
+
+### Short-Term Outcomes
+
+- Jacob shares info on waste water management + viral load information
+
+## Notes
+
+- Introductions
+  - Tiem van der Deure
+    - University of Copenhagen PhD
+    - Vector-borne Disease Modeling
+    - Epidemiological modeling and climate effects on health
+    - Rafael Schoueten 
+  - Scott Jones
+    - Heavily involved in healthcare IT 
+  - dx/dt
+
+- Google Summer of Code
+  - Recently discovered by the team
+  - Google Season of Docs
+    - Best for long-term maintenance
+    - Significant challenge organizing in Julia docs ecosystem
+
+- OHDSI + Julia
+  - Working with EHR from EPIC is demanding
+    - Labour intensive albeit improving
+  - Turing modeling "making them work"
+    - Getting them to run
+      - Making it run fast enough
+      - Trade off ease-of-use for computation speed
+    - Requires significant mathematical ability for speed gains
+
+- Sewage water information for disease population estimations
+  - Weekly excerpt
+  - Infectious disease doctor
+    - Would be really neat to make some kind of app to check wastewater
+      - Propensity of viruses in ER
+  - Physician testing for rough understanding of what is happening in community
+    - Ability to look for multiple co-factors instead of just one disease
+  - Many healthcare systems put together monitoring systems
+    - NHS (in UK) dismantled their monitoring systems
+
+- Databases and JuliaHealth
+    - Show how to do the basics
+    - Common database errors
+        - How to address them
+    - Consider having more people working in this space?
+    - Not really a problem within ecosystem
+    - Look at drivers across all packages to see how things work in Julia ecosystem
+        - See how we can address issues across ecosystem
 
 # August 25 2023
 
@@ -177,7 +373,7 @@ Additionally, the notes are [hosted publicly on the GitHub](https://github.com/J
         - Coming from JuliaCon
         - Excited about Health stuff
 
-- Interoperability of Julia with health research ecosystems (R )
+- Interoperability of Julia with health research ecosystems (R)
     - Easiest way to interoperate is to call them directly from the command line
     - Build your own executables
     - Most reliable/easiest
