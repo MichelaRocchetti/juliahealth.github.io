@@ -38,83 +38,82 @@ Additionally, the notes are [hosted publicly on the GitHub](https://github.com/J
 
 ### Short-Term Outcomes
 
-
+- Jacob intro's Phil and Jakub
+- Jacob follows-up with Phil
 
 ### Long-Term Outcomes
 
-
+- Create a template repository for JuliaHealth
 
 ## Notes
 
 - New member introductions
-    - Phil Vernes
-        3. Works at JuliaHub
-        4. Developing platform for running Julia jobs
-        5. Many people at JuliaHub using tools within epi
-        6. Can solve many problems in DSL
-    - Jay Sanjay
-        8. Started contributing to the JuliaHealth ecosystem
-        9. Looking forward to collaborating
+  - Phil Vernes
+      - Works at JuliaHub
+      - Developing platform for running Julia jobs
+      - Many people at JuliaHub using tools within epi
+      - Can solve many problems in DSL
+  - Jay Sanjay
+      - Started contributing to the JuliaHealth ecosystem
+      - Looking forward to collaborating
 - Running tasks follow-ups:
-  * Short-term task follow-ups:
-    * Jacob shares info on waste water management + viral load information
-  * Long-term task follow-ups:
-    * Creating a template repository
-        * We need to have a data structure to hold metadata (DICOM, NIFTI, etc.)
-        * JuliaNeuro 
-        * HDF5 for long-term storage
-            * Would be great to see everyone using this
-            * To work on this to bring this together 
-            * Multiple packages could have same
-5. Presentation by Jakub Mitura on sub-ecosystem he created for working with CT, PET, and other medical imaging types of data. 
-    6. Created three packages
-    7. Mainly talking about MedEye3D
-    8. Segment data and iterate to see what is going on
-    9. Wanted to create tools for everything around model creation
-    10. Wanted to make a viewer that is well-suited for the Julia ecosystem
-        11. Most medical viewers are quite "old"
-        12. Not really dynamic
-        13. Hard to show changes within run-time
-    14. Easy to get big increase in Julia
-        15. Usually something like 10x's faster
-    16. We do not yet standardize way to load data
-    17. Metadata is saved to HDF5 format 
-    18. Can introduce dynamic annotations
-    19. Can have layers and switch on and switch layers
-    20. Can annotate for saying where is the problem in the viewer
-    21. Viewer can dynamically update
-    22. Questions
-        23. Tested some semi-automatic algorithms
-        24. Do evaluate repeat
-        25. Makes it faster for evaluation and reviewing of medical images
-        26. Depends on OpenGL and NVIDIA drivers
-        27. Working on Docker container that keeps
-        28. What segmentation algorithm? Approach?
-            29. Based on Gaussian probability distributions
-            30. Some relaxation applied
-            31. Based mainly on the units and different kinds
-            32. Becoming more interested in transformers
-            33. Implemented in JAX but want to bring it into Julia
-            34. Segmentation for bladder cancer in image analysis
-            35. Restarted work recently in Julia 
-        36. Would be useful for others?
-            37. New segmentation for other ecosystem within Julia
-9. Upcoming and ongoing research opportunities
-  * Call for collaboration on using JuliaHealth observational health tools for multi-site study
-10. Medical Imaging Extension for Real World Evidence exploration
-    11. Idea was to implement package for medical imaging
-    12. Pillars
-        13. Computing statistics across medical imaging 
-        14. Complete datasets for experimetnign 
-        15. Feature segmentation and scanning 
-            16. Align probabilistic model between different scans
-            17. Become easier for physicians
-        18. ML model for complex models for image segmentation 
-    19. Thing to consider -- need more robustness for image alignment?
-        20. SOme transformations are relatively easier to repair
-        21. Elastic deformations
-        22. If we want 
-12. Open discussion
+  - Short-term task follow-ups:
+    - Jacob shares info on waste water management + viral load information
+  - Long-term task follow-ups:
+    - Creating a template repository
+        - We need to have a data structure to hold metadata (DICOM, NIFTI, etc.)
+        - JuliaNeuro 
+        - HDF5 for long-term storage
+            - Would be great to see everyone using this
+            - To work on this to bring this together 
+            - Multiple packages could have same
+- Presentation by Jakub Mitura on sub-ecosystem he created for working with CT, PET, and other medical imaging types of data. 
+  - Created three packages
+  - Mainly talking about MedEye3D
+  - Segment data and iterate to see what is going on
+  - Wanted to create tools for everything around model creation
+  - Wanted to make a viewer that is well-suited for the Julia ecosystem
+    - Most medical viewers are quite "old"
+    - Not really dynamic
+    - Hard to show changes within run-time
+  - Easy to get big increase in Julia
+    - Usually something like 10x's faster
+  - We do not yet standardize way to load data
+  - Metadata is saved to HDF5 format 
+  - Can introduce dynamic annotations
+  - Can have layers and switch on and switch layers
+  - Can annotate for saying where is the problem in the viewer
+  - Viewer can dynamically update
+  - Questions
+    - Tested some semi-automatic algorithms
+    - Do evaluate repeat
+    - Makes it faster for evaluation and reviewing of medical images
+    - Depends on OpenGL and NVIDIA drivers
+    - Working on Docker container that keeps
+    - What segmentation algorithm? Approach?
+      - Based on Gaussian probability distributions
+      - Some relaxation applied
+      - Based mainly on the units and different kinds
+      - Becoming more interested in transformers
+      - Implemented in JAX but want to bring it into Julia
+      - Segmentation for bladder cancer in image analysis
+      - Restarted work recently in Julia 
+    - Would be useful for others?
+      - New segmentation for other ecosystem within Julia
+- Upcoming and ongoing research opportunities
+- Call for collaboration on using JuliaHealth observational health tools for multi-site study
+- Medical Imaging Extension for Real World Evidence exploration
+    - Idea was to implement package for medical imaging
+    - Pillars
+      - Computing statistics across medical imaging 
+      - Complete datasets for experimenting 
+      - Feature segmentation and scanning 
+        - Align probabilistic model between different scans
+        - Become easier for physicians
+      - ML model for complex models for image segmentation 
+    - Thing to consider -- need more robustness for image alignment?
+      - Some transformations are relatively easier to repair
+      - Elastic deformations
 
 # September 29 2023
 
