@@ -2,7 +2,103 @@
 
 These are the public notes for the JuliaHealth Community.
 Notes are published publicly here and are available for comments and review on the [public HackMD](https://hackmd.io/@AQm1lp9PSPyir6IoTPAZeQ/SJNu_d3uh). 
-Additionally, the notes are [hosted publicly on the GitHub](https://github.com/JuliaHealth/juliahealth.github.io/blob/dev/meeting-notes.md) and are open for PRs or edits as needed.
+Additionally, the notes are [hosted publicly on the GitHub](https://github.com/JuliaHealth/juliahealth.github.io/blob/dev/meeting-notes.md) and are open for PRs or edits as needed
+
+# December 15 2023
+
+**In Attendance:** Jacob Zelko, Jay Sanjay, Jakub Mitura, Zach Christensen, Divital coder
+
+**Location:** Virtual (JuliaHealth Google Meet)
+
+**Summary:** JuliaHealth full year review, Dicsussions on the upcoming GSoC projects in JuliaHealth.
+
+**Keywords:** #medical #imaging #gsoc #ohdsi #newyear #observationalHealth
+
+## Agenda
+
+
+
+1. New member introductions
+2. New contributor round-up!
+3. Running tasks follow-ups:
+5. State of the JuliaHealth community discussion
+   * Talking about the different aspects of the JuliaHealth community
+     * Mapping the JuliaHealth community
+   * Accomplishments throughout the year
+     * JuliaCon 2023
+     * GSoC
+     * Publications/etc.
+   * Open Problems and ongoing work
+     * Technical problems
+     * Making JuliaHealth more accessible for all
+   * Future goals for the JuliaHealth ecosystem
+   * Open discussion
+6. JuliaCon 2024!
+7. Google Summer of Code Discussion
+   * What it is
+   * Proposed projects and ideas
+   * Open discussion
+8. Calls for collaboration
+9. Open discussion
+
+## Meeting Outcomes
+
+### Short-Term Outcomes
+   * Jacob follows-up with Zach.
+   
+
+### Long-Term Outcomes
+   * Increasing code ownership.
+
+
+## Notes
+
+1. Introductions
+   * Divital coder 
+      - Aspiring contributor for the 2024 Julia Organization.
+3. Contributor Round-Up
+   * Shout outs to Farreeda for working on JuliaHealth Observational Health Sub-ecosystem Juliacon proceddings paper.
+   * Shout outs to Jay-Sanjay for tagging new release of OMOPCDMCohortCreator.
+5. State of the JuliaHealth community discussion
+   * Talking about the different aspects of the JuliaHealth community
+     * Mapping the JuliaHealth community
+   * Accomplishments throughout the year
+     * JuliaCon 2023
+        * Birds of Feather: Julia for Health and Medicine – Dilum Aluthge, Jacob Zelko
+        + 100 Million Patients: Julia for international Health studies
+     * First ever JuliaHealth GSoC fellow - Fareeda Abdelazeez
+     * ODHSI Global Symposium 2023
+   * Open Problems and ongoing work
+     * Technical problems
+     * Making JuliaHealth more accessible for all
+     * Future goals for the JuliaHealth ecosystem
+     * Expanding the OMOPCDM for hospital price transparency and transparency coverage.
+   * Open discussion
+       * Open discussion on standards across JuliaHealth
+       * Zach happy to support and think around this
+       * Schedule one-off discussion 
+       * Making juliahealth calls more Europe+asia/pacific friendly. Suggestions to have a one meet each for american time zone separate and one for asia/pacific time zone
+6. JuliaCon 2024!
+   * Proposal-a-thon
+8. Google Summer of Code Discussion
+   * What is GSoC/JSoC ?
+   * Proposed projects and ideas
+   * MedPipe3D
+       * Loading medical imaging data
+       * Modeling perspective most generally developed
+       * Super-voxels image mapping
+       * Edge matching; can make this code within Julia vs. Cpp
+       * Display borders of images
+       * Integrate segmentation like rotations recalling gamma.
+       * Add basic post-processing like largest corrected components.
+       * Add patch based data loading with probabilistic oversampling.
+   * Open discussion
+9. Calls for collaboration
+10. Open discussion
+    * JuliaCon 2024 and Proposal-a-thon
+    * Addressing the “Paradox of Composition” 
+
+
 
 # October 27 2023
 
