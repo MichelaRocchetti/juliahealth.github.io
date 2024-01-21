@@ -4,6 +4,70 @@ These are the public notes for the JuliaHealth Community.
 Notes are published publicly here and are available for comments and review on the [public HackMD](https://hackmd.io/@AQm1lp9PSPyir6IoTPAZeQ/SJNu_d3uh). 
 Additionally, the notes are [hosted publicly on the GitHub](https://github.com/JuliaHealth/juliahealth.github.io/blob/dev/meeting-notes.md) and are open for PRs or edits as needed
 
+
+# January 20 2024
+
+## Meeting Summary (Oceania/Asia specific)
+
+**In Attendance:** Jay Sanjay, Abhirath Anand, Jacob Zelko
+
+**Location:** Virtual (JuliaHealth Google Meet)
+
+**Summary:** Overview of the Oceania/Asia specific JuliaHealth monthly meeting
+
+**Keywords:** #juliahealth #meeting #asia #oceania #llms #beginner
+
+## Meeting Outcomes
+
+### Short-Term Outcomes
+
+
+
+### Long-Term Outcomes
+
+
+
+## Meeting Notes
+
+
+- Abhirath Anand
+
+  * Final year CS student in India.
+
+  * Former GSoCer.
+
+    + Worked on MetalHead.jl
+
+    + No longer quite interested in Computer CV
+
+  * Interested in JuliaHealth.
+
+- People excited about separate JuliaHealth meeting
+
+  * Grown to a separate JuliaHealth meeting for Oceania/Asia specific times.
+
+  * Wanted more people to join .
+
+- Different packages and ideas
+
+  * JuliaHealthLLMs 
+
+    + How can we use LLMs for JuliaHealth?
+
+- How to get started with JuliaHealth - Abhirath 
+
+  * Medical imaging looks well-aligned but want to explore some different. 
+
+  * What is the observational health subecosystem?
+
+    + Go through documentation of JuliaHealth.
+
+    + Jay can send some.
+
+
+
+
+
 # December 15 2023
 
 **In Attendance:** Jacob Zelko, Jay Sanjay, Jakub Mitura, Zach Christensen, Divital coder
