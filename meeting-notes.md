@@ -4,6 +4,125 @@ These are the public notes for the JuliaHealth Community.
 Notes are published publicly here and are available for comments and review on the [public HackMD](https://hackmd.io/@AQm1lp9PSPyir6IoTPAZeQ/SJNu_d3uh). 
 Additionally, the notes are [hosted publicly on the GitHub](https://github.com/JuliaHealth/juliahealth.github.io/blob/dev/meeting-notes.md) and are open for PRs or edits as needed
 
+# January 25 2024
+
+## Meeting Summary (Americas/Europe/Africa Specific)
+
+**In Attendance:** Jay Sanjay, Abhirath Anand, Carlos Castillo, Boris Enrique, Jacob Zelko
+
+**Location:** Virtual (JuliaHealth Google Meet)
+
+**Summary:** Medical imagining, fairness and health equity in observational health, and dashboards!
+
+**Keywords:** #juliahealth #meeting #americas #africa #europe #fairness #koma #fairness #dashboards
+
+## Meeting Outcomes
+
+### Short-Term Outcomes
+
+- Jacob follows up with Carlos and Boris about synthetic MRI generation
+  - Pulls in Jakub and Zachary to discussion
+
+### Long-Term Outcomes
+
+
+
+## Notes
+
+1. New member introductions
+
+   * Carlos Castillo 
+
+     - King's College London
+ 
+     - PhD student 
+ 
+   * Abhirath Anand
+
+     - Final year undergraduate 
+     - Curious about getting more into life sciences
+     - Biology and healthcare
+
+2. Announcements: 
+
+   * New meeting times
+     * Last Thursday of every month at 12PM EST
+
+   * Why two separate meetings?
+     * One for Asia/Oceania
+       * Thanks Jay Sanjay for running this!!!
+     * One for Americas/Africa/Europe
+     * Trying to improve accessibility and inclusion
+  
+   * Meeting recordings
+     * Going forward, meetings will be recorded
+     * Added to a playlist on Julia YouTube page
+
+3. New contributor round-up!
+
+   * Nothing this meeting
+
+4. Running tasks follow-ups:
+
+   * Nothing this meeting
+
+5. Presentation by Carlos Castillo Passi on GSoC projects on medical imaging. 
+
+  - Written using CuDA
+  - Doing MRI simulation very quickly
+    - Can be used for machine learning overview
+  - Built around several packages with MRI
+    - Incredible work with coverage
+  - Super friendly GUI
+  - Bloch equations are hard to understand
+  - GSoC Project
+    - Trying to do actual kernel programming
+    - KernelAbstractions.jl
+    - Solving DifferentialEquations.jl
+    - Boost speed
+    - Implement new algorithms
+    - Suggested skills
+      - Experience with Julia
+      - MRI concepts
+      - GPU programming
+    - Goals:
+      - New Bloch kernel methods
+      - Further tests on build kite/GPU testing
+      - Documentation
+
+6. Fairness and health equity within Observational Health Research
+
+   * Assessing phenotype fairness
+
+   * Forthcoming package
+
+   * Work done so far
+   * Paper reference: https://arxiv.org/pdf/2203.05174.pdf
+
+7. Creating dashboards for JuliaHealth
+
+   * Announcement from Genie.jl
+
+   * Custom dashboard components
+   * Question: What would this look like for JuliaHealth?
+     * Create a standard interface across JuliaHealth packages
+     * Can interface with a JuliaHealthDashboards package
+       * HealthDashboard.jl?
+       * Custom components for the general JuliaHealth ecosystem could be housed in package
+     * Researchers can easily build together commonly used health dashboards
+
+8. Event Reminders
+
+   * Google Summer of Code
+
+   * JuliaCon 2024
+
+9. Upcoming and ongoing research opportunities
+
+   * Observational Health Research at Northeastern Uni
+
+   * Glass Notebooks from Dale Black (Not Discussed; saved for next month)
+
 
 # January 20 2024
 
