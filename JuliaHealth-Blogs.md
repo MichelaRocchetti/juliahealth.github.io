@@ -17,7 +17,7 @@ Here are the packages we will need for exploring patient pathways grouped by pri
 - Health analytics built specifically for working with OMOP CDM databases
 
 
-    * [`OMOPCDMCohortCreator.jl`](https://github.com/JuliaHealth/OMOPCDMCohortCreator.jl) - Create cohorts from databases utilizing the OMOP CDM
+    * [`OMOPCDMCohortCreator`](https://github.com/JuliaHealth/OMOPCDMCohortCreator.jl) - Create cohorts from databases utilizing the OMOP CDM
 
 - General data analytics tools
 
