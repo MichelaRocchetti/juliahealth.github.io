@@ -1,10 +1,16 @@
 # Exploring Patient Pathways within JuliaHealth
 
+## What is Patient Pathways ?
+Patient pathways refer to the journey that patients with specific medical conditions undergo in terms of their treatment. This concept goes beyond simple drug uptake statistics and looks at the sequence of treatments patients receive over time, including first-line treatments and subsequent therapies. Understanding patient pathways is essential for analyzing treatment patterns, adherence to clinical guidelines, and the rational use of drugs.
+To analyze patient pathways, one would typically use real-world data from sources such as electronic health records, claims data, and registries. However, barriers such as data interoperability and resource requirements have hindered the full utilization of real-world data for this purpose.
+
+So to address these challenges we wanna introduce to a set of tool to extract and analyze these patient pathways. These set of tool are based on the Observational Medical Outcomes Partnership (OMOP) common data model, which standardizes health care data to promote interoperability.
+
 ## Introduction
 Here, we are going to have a walkthrough of how to filter out treatment pathways of interest for a given dataset present in CDM format.
 
 
-## Required Packages
+## Environment Set-Up and Packages 📝
 
 Here are the packages we will need for exploring patient pathways grouped by primary use cases in this exploration:
 
@@ -32,7 +38,7 @@ Here are the packages we will need for exploring patient pathways grouped by pri
     * `Base` - Default libraries built into Julia
 
 
-1. First step is to import all the essential Packages:
+## Adding the required Dependencies
 
 ```
 TUTORIAL> add DBInterface
@@ -43,7 +49,7 @@ TUTORIAL> add DataFrames
 TURORIAL> add FunSQL
 ```
 
-2. Next we need Data to be worked on.
+## Data
 
     For this tutorial, we will work with data from [`Eunomia`](https://github.com/OHDSI/Eunomia) that is stored in a SQLite format. To install the data on your machine, execute the following code block and follow the prompts - you will need a stable internet connection for the download to complete:
 
@@ -54,14 +60,15 @@ eunomia = Eunomia()
 ```
 
 
-3. After you have finished your set up in the Julia, we need to establish a connection to the Eunomia SQLite database that we will use for the rest of the tutorial:
+## Connecting to the Eunomia Database 💾
+After you have finished your set up in the Julia, we need to establish a connection to the Eunomia SQLite database that we will use for the rest of the tutorial:
 ```
 import SQLite: DB
 
 conn = DB(eunomia)
 ```
 
-4. With Eunomia, the database's schema is simply called "main". We will use this to generate database connection details that will inform `OMOPCDMCohortCreator` about the type of queries we will write (i.e. SQLite) and the name of the database's schema. For this step, we will use `OMOPCDMCohortCreator`:
+With Eunomia, the database's schema is simply called "main". We will use this to generate database connection details that will inform `OMOPCDMCohortCreator` about the type of queries we will write (i.e. SQLite) and the name of the database's schema. For this step, we will use `OMOPCDMCohortCreator`:
 
 ```
 import OMOPCDMCohortCreator as occ
@@ -72,20 +79,21 @@ occ.GenerateDatabaseDetails(
 )
 ```
 
-5. Then will generate internal representations of each table found within Eunomia for OMOPCDMCohortCreator to use:
+Then will generate internal representations of each table found within Eunomia for OMOPCDMCohortCreator to use:
 
 ```
 occ.GenerateTables(conn)
 ```
 
-6. Now to make things easy for this tutorial we will characterize a group of patients with a certain condition (or conditions) across various attributes like race, age, and combinations thereof. We are going to do miniature version of such a study looking at patients with strep throat. For this, we will use the condition_concept_id: 2806028060 - this will be needed for you to get correct results.
+## Characterizing Patients Who Have Had Strep Throat 🤒
+Now to make things easy for this tutorial we will characterize a group of patients with a certain condition (or conditions) across various attributes like race, age, and combinations thereof. We are going to do miniature version of such a study looking at patients with strep throat. For this, we will use the ``condition_concept_id``: 28060 - this will be needed for you to get correct results.
 
 ```
 strep_patients = occ.ConditionFilterPersonIDs(28060, conn)
 ```
 
 
-7. Now this are some of the required functions that probabily would be directly be useable via `occ` after the new version of [`OMOPCDMCohortCreator`](https://github.com/JuliaHealth/OMOPCDMCohortCreator.jl) is released.
+**Now this are some of the required functions that probabily would be directly be useable via `occ` after the new version of [`OMOPCDMCohortCreator`](https://github.com/JuliaHealth/OMOPCDMCohortCreator.jl) is released.**
 
 
 * Function to query the drug's start date for a given drug.
