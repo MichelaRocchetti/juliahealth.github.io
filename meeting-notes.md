@@ -4,6 +4,99 @@ These are the public notes for the JuliaHealth Community.
 Notes are published publicly here and are available for comments and review on the [public HackMD](https://hackmd.io/@AQm1lp9PSPyir6IoTPAZeQ/SJNu_d3uh). 
 Additionally, the notes are [hosted publicly on the GitHub](https://github.com/JuliaHealth/juliahealth.github.io/blob/dev/meeting-notes.md) and are open for PRs or edits as needed
 
+# February 29 2024
+
+## Meeting Summary (Americas/Europe/Africa Specific)
+
+**In Attendance:** Jacob Zelko, Anshul Singhvi, Adam Wysokiński, Aurora Rossi, Dan Getz, Luna Fazio, Jay Landge, Edwin Mkwanazi, Alice Piller, Thembi Ndimande, Siyabonga Nxumalo, Hlengiwe, Muhammad Mahmoud, Jan Zubik, Sfundo Khumalo, Carlos Castillo Passi, Ram Samarth, Dina Khalid
+
+**Location:** Virtual (Northeastern University Zoom)
+
+**Summary:** Introducing new JuliaHealth projects, JuliaHealth blog, Google Summer of Code, and planning a JuliaHealth Day
+
+**Keywords:** #juliahealth #meeting #americas #africa #europe #neuro #imaging #gsoc #planning
+
+## Meeting Outcomes
+
+### Short-Term Outcomes
+
+* Jacob follows up with Carlos and Boris about synthetic MRI generation
+
+### Long-Term Outcomes
+
+
+
+## Notes
+
+1. Announcements:
+   * Meeting recording logistics
+
+2. New member introductions
+   * Luna Fazio
+     * Statistics PhD
+     * Coming back to epidemiology
+     * Coming back to health roots
+   * Adam Wysokiński
+     * Creator of NeuroAnalyzer.jl
+     * Psychiatrist
+     * Many different modalities of research
+   * Aurora Rossi
+     * Functional MRI
+     * PhD student
+   * Alice Piller
+     * Applying Julia in bioinformatics
+   * Edwin Mkwanazi
+     * Julia in clinical trials
+     * Learn more about how to implement more in Julia
+   * Carlos Castillo
+     * Creator of KomaMRI
+     * PhD student
+
+3. New contributor round-up!
+   * KomaMRI 
+   * NeuroAnalyzer Adam Wysokinski
+
+4. JuliaHealth News
+   * Northeastern University RISE Conference
+   * A JuliaHealth Blog?!?!?
+
+5. Task Follow-ups
+   * Jacob follows up with Carlos and Boris about synthetic MRI generation
+
+6. GSoC + JuliaHealth
+   * Projects
+   * Important dates
+   * Open discussion
+
+7. Brainstorming a JuliaHealth Day
+   * JuliaHealth is growing rapidly!!!
+   * Might be confusing about where to go/get started
+     * Three core ares
+   * Luna
+     * Had a mixture of working with different data
+     * Public health approach
+     * I as a doctor want to predict for patients
+     * Perhaps it would be interesting to see what problems they have
+       * Possible approaches
+   * Jan
+     * More about pipelines
+     * What's their strength in practice
+     * Seeing pipelines in action
+   * Ram
+     * How is Julia being used in health already?
+
+8. Glass Notebooks
+   * Created by Dale Black
+   * Link: https://glassnotebook.io
+
+9. Upcoming and ongoing research opportunities
+   * Observational Health Research at Northeastern Uni
+
+10. Upcoming Events
+   * JuliaCon 2024
+
+11. Open Discussion
+
 # January 25 2024
 
 ## Meeting Summary (Americas/Europe/Africa Specific)
