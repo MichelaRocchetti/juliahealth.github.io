@@ -1,3 +1,4 @@
+@def title = "Patient pathways"
 # Exploring Patient Pathways within JuliaHealth
 
 ## What is Patient Pathways ?
@@ -40,37 +41,43 @@ Here are the packages we will need for exploring patient pathways grouped by pri
 
 ## Adding the required Dependencies
 
+```julia:./ex1
+using Pkg
+Pkg.add(["DBInterface", "SQLite", "DataFrames", "FunSQL", "HealthSampleData", "OMOPCDMCohortCreator"])
+using DBInterface
+using HealthSampleData
+using OMOPCDMCohortCreator
+using SQLite
+using DataFrames
+using FunSQL
 ```
-TUTORIAL> add DBInterface
-TUTORIAL> add HealthSampleData
-TUTORIAL> add OMOPCDMCohortCreator
-TUTORIAL> add SQLite
-TUTORIAL> add DataFrames
-TURORIAL> add FunSQL
-```
+\show{./ex1}
 
 ## Data
 
     For this tutorial, we will work with data from [`Eunomia`](https://github.com/OHDSI/Eunomia) that is stored in a SQLite format. To install the data on your machine, execute the following code block and follow the prompts - you will need a stable internet connection for the download to complete:
 
-```
+```julia:./ex2
 import HealthSampleData: Eunomia
-
 eunomia = Eunomia()
 ```
+
+\show{./ex2}
 
 
 ## Connecting to the Eunomia Database 💾
 After you have finished your set up in the Julia, we need to establish a connection to the Eunomia SQLite database that we will use for the rest of the tutorial:
-```
-import SQLite: DB
 
+```julia:./ex3
+import SQLite: DB
 conn = DB(eunomia)
 ```
 
+\show{./ex3}
+
 With Eunomia, the database's schema is simply called "main". We will use this to generate database connection details that will inform `OMOPCDMCohortCreator` about the type of queries we will write (i.e. SQLite) and the name of the database's schema. For this step, we will use `OMOPCDMCohortCreator`:
 
-```
+```julia:./ex4
 import OMOPCDMCohortCreator as occ
 
 occ.GenerateDatabaseDetails(
@@ -79,146 +86,110 @@ occ.GenerateDatabaseDetails(
 )
 ```
 
+\show{./ex4}
+
 Then will generate internal representations of each table found within Eunomia for OMOPCDMCohortCreator to use:
 
-```
+```julia:./ex5
 occ.GenerateTables(conn)
 ```
+
+\show{./ex5}
 
 ## Characterizing Patients Who Have Had Strep Throat 🤒
 Now to make things easy for this tutorial we will characterize a group of patients with a certain condition (or conditions) across various attributes like race, age, and combinations thereof. We are going to do miniature version of such a study looking at patients with strep throat. For this, we will use the ``condition_concept_id``: 28060 - this will be needed for you to get correct results.
 
-```
+```julia:./ex6
 strep_patients = occ.ConditionFilterPersonIDs(28060, conn)
+println(first(strep_patients, 10))
 ```
 
+\show{./ex6}
 
-**Now this are some of the required functions that probabily would be directly be useable via `occ` after the new version of [`OMOPCDMCohortCreator`](https://github.com/JuliaHealth/OMOPCDMCohortCreator.jl) is released.**
 
 
-* Function to query the drug's start date for a given drug.
-```
-function GetDrugExposureStartDate(
-    drug_exposure_ids;
-    tab = drug_exposure
-)
 
-    sql =
-        From(tab) |>
-        Where(Fun.in(Get.drug_exposure_id, drug_exposure_ids...)) |>
-        Select(Get.drug_exposure_id, Get.drug_exposure_start_date) |>
-        q -> render(q, dialect=dialect)
-
-    return String(sql)
-
-end
-
-function GetDrugExposureStartDate(
-    drug_exposure_ids,
-    conn;
-    tab = drug_exposure 
-)
-
-    df = DBInterface.execute(conn, GetDrugExposureStartDate(drug_exposure_ids; tab=tab)) |> DataFrame
-
-    return df
-end
-```
-* Function to query the drug's end date for a given drug.
-```
-function GetDrugExposureEndDate(
-    drug_exposure_ids;
-    tab = drug_exposure
-)
-
-    sql =
-        From(tab) |>
-        Where(Fun.in(Get.drug_exposure_id, drug_exposure_ids...)) |>
-        Select(Get.drug_exposure_id, Get.drug_exposure_end_date) |>
-        q -> render(q, dialect=dialect)
-
-    return String(sql)
-
-end
-
-function GetDrugExposureEndDate(
-    drug_exposure_ids,
-    conn;
-    tab = drug_exposure 
-)
-
-    df = DBInterface.execute(conn, GetDrugExposureEndDate(drug_exposure_ids; tab=tab)) |> DataFrame
-
-    return df
-end
-
-```
-
-#So now that we have the dataset to work with as well as all the functions to work with also ready, we from here can start work form PATHWAYS-STUDY.
+## So now that we have the dataset to work with as well as all the functions to work with also ready, we from here can start work form PATHWAYS-STUDY.
 
 * To start with we need to get the `drug ids` corresponding to each of the patients with strep throat.
-```
+
+```julia:./ex7
 patient_drug_exposures = occ.GetDrugExposureIDs(strep_patients, conn)
+println(first(patient_drug_exposures, 10))
 ```
+
+\show{./ex7}
 
 
 * We would also require `drug concepts` 
-```
+```julia:./ex8
 pateints_drug_concept_id = occ.GetDrugConceptIDs(patient_drug_exposures, conn)
+println(first(pateints_drug_concept_id, 10))
 ```
+
+\show{./ex8}
 
 
 
 * Now that we have the `drug ids` corresponding to each patients we now need to get the `start date` and `end date` corresponding to each `drug ids`
 
+```julia:./ex9
+exposure_start_date = occ.GetDrugExposureStartDate(patient_drug_exposures.drug_exposure_id, conn)
+println(first(exposure_start_date, 10))
+
+
+exposure_end_date = occ.GetDrugExposureEndDate(patient_drug_exposures.drug_exposure_id, conn)
+println(first(exposure_end_date, 10))
 ```
-exposure_start_date = GetDrugExposureStartDate(patient_drug_exposures.drug_exposure_id, conn)
 
-
-exposure_end_date = GetDrugExposureEndDate(patient_drug_exposures.drug_exposure_id, conn)
-```
-
+\show{./ex9}
 
 * A thing to notice here is that the dates here are in `unix` format, which preety annoying to understand so we need to convert it into `data-time` format. This can be done as follows
-```
+```julia:./ex10
 exposure_start_date.drug_exposure_start_date = exposure_start_date.drug_exposure_start_date .|> unix2datetime
 
 exposure_end_date.drug_exposure_end_date = exposure_end_date.drug_exposure_end_date .|> unix2datetime
+
+println(first(exposure_end_date, 10))
 ```
+\show{./ex10}
 
 * Now to make the Dataframe look more appealing we try to combine the dataset like this:
 
-```
+```julia:./ex11
 combined_df = DataFrames.outerjoin(patient_drug_exposures, exposure_start_date, on = :drug_exposure_id)
 combined_df = DataFrames.outerjoin(combined_df, exposure_end_date, on = :drug_exposure_id)
 combined_df = DataFrames.outerjoin(combined_df, pateints_drug_concept_id, on = :drug_exposure_id, makeunique=true)
+println(first(combined_df, 10))
 ```
+\show{./ex11}
+
+
 * Now we need to sort the Dataframe in the ascending order of the dates.
-```
+```julia:./ex12
 combined_df =  sort!(combined_df, :drug_exposure_start_date)
+println(first(combined_df, 10))
 ```
 
-* An important thing to notice here is that some start and end dates seems to be preety weird like below:
-```
-    Row │ person_id  drug_exposure_id  drug_exposure_start_date  drug_exposure_end_date    drug_concept_id  person_id_1 
-        │ Float64?   Float64?          Union{Missing, DateTime}  Union{Missing, DateTime}  Float64?         Float64?    
- 109154 │     484.0           22308.0  2019-07-01T00:00:00       1955-01-22T00:00:00             1.12708e6       1834.0
- 109155 │     484.0           22308.0  2019-07-01T00:00:00       1955-01-22T00:00:00             1.12708e6        484.0
- 109156 │     484.0           22308.0  2019-07-01T00:00:00       1955-01-22T00:00:00             4.02132e7       1834.0
- 109157 │     484.0           22308.0  2019-07-01T00:00:00       1955-01-22T00:00:00             4.02132e7        484.0
-```
+\show{./ex12}
 
-* So in-order to address this issue within the dataset, we will chop off such rows for our pathways study by doinf something like this:
-```
+* An important thing to notice here is that some start and end dates seems to be preety weird. We need to make sure that the start date is less than the end date.
+
+* So in-order to address this issue within the dataset, we will chop off such rows for our pathways study by doing something like this:
+
+```julia:./ex13
 combined_df = combined_df[combined_df.drug_exposure_start_date .< combined_df.drug_exposure_end_date, :]
+println(first(combined_df, 10))
 ```
+
+\show{./ex13}
 
 * Now as a final step to exploring pathways, we peform a very naive approach to get the treatment-pathways by:
 1. Itterate through each of the `patients_id`
-2. Itterate through the combined_df and push the drug_exposure_id to the drug_pathways list if the two consecutive start dates are different as well as the two consecutive end dates are different.
+2. Itterate through the combined_df and push the `drug_exposure_id` to the `drug_pathways` list if the two consecutive start dates are different as well as the two consecutive end dates are different.
 
 
-```
+```julia:./ex14
 pathways_dict = Dict()
 
 for person_id in unique(combined_df.person_id)
@@ -232,8 +203,15 @@ for person_id in unique(combined_df.person_id)
     pathways_dict[person_id] = pathways
 end
 ```
+\show{./ex14}
 
 * Now the pathways of our interset are present in the dixtionary `pathways_dict`that would look like this:
+
+```julia:./ex15
+println(first(pathways_dict, 10))
+```
+
+\show{./ex15}
 
 ```
 Dict{Any, Any} with 1677 entries:
